@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clément — Portfolio</title>
+<meta name="description" content="Portfolio de Clément : web & design, templates Notion, e-commerce et sport.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #081428;
+    --bg-2: #0d1f3c;
+    --card: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.09);
+    --text: #f7f9fc;
+    --muted: #a8b5cc;
+    --accent: #ff6f61;
+    --accent-2: #8fb4ff;
+    --accent-3: #ff8a7a;
+    --radius: 18px;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { font-family: "Space Grotesk", Inter, sans-serif; line-height: 1.1; }
+
+  /* Fond animé */
+  #bg { position: fixed; inset: 0; z-index: -2; width: 100%; height: 100%; }
+  .grain {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+    z-index: 10; width: min(var(--max), calc(100% - 32px));
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px 10px 20px;
+    background: rgba(8,20,40,.65); backdrop-filter: blur(14px);
+    border: 1px solid var(--card-border); border-radius: 999px;
+  }
+  .logo { font-family: "Space Grotesk"; font-weight: 700; font-size: 1.1rem; }
+  .logo span { color: var(--accent-2); }
+  .nav-links { display: flex; gap: 4px; }
+  .nav-links a {
+    padding: 8px 14px; border-radius: 999px; font-size: .9rem; color: var(--muted);
+    transition: color .2s, background .2s;
+  }
+  .nav-links a:hover { color: var(--text); background: rgba(255,255,255,.06); }
+  .nav-cta {
+    padding: 8px 16px; border-radius: 999px; font-size: .9rem; font-weight: 600;
+    background: var(--text); color: var(--bg);
+  }
+
+  section { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; padding: 110px 0 40px; }
+
+  /* Hero */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 140px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; width: fit-content;
+    padding: 6px 14px; border-radius: 999px; font-size: .85rem; color: var(--muted);
+    border: 1px solid var(--card-border); background: var(--card);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #2ee58f; box-shadow: 0 0 12px #2ee58f; animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { opacity: .4; } }
+  .hero h1 { font-size: clamp(2.8rem, 8vw, 6.2rem); margin: 22px 0 20px; letter-spacing: -0.03em; }
+  .grad {
+    background: linear-gradient(90deg, var(--accent-2), #ffffff, var(--accent), var(--accent-2));
+    background-size: 300% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shift 8s linear infinite;
+  }
+  @keyframes shift { to { background-position: 300% 0; } }
+  .typed { color: var(--text); border-right: 2px solid var(--accent-2); padding-right: 4px; }
+  .hero p { max-width: 620px; font-size: 1.15rem; color: var(--muted); }
+  .hero-actions { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+  .btn {
+    padding: 14px 24px; border-radius: 999px; font-weight: 600;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-3)); box-shadow: 0 10px 40px -10px var(--accent); }
+  .btn-ghost { border: 1px solid var(--card-border); background: var(--card); }
+  .stats { display: flex; gap: 40px; margin-top: 60px; flex-wrap: wrap; }
+  .stat b { display: block; font-family: "Space Grotesk"; font-size: 2rem; }
+  .stat span { color: var(--muted); font-size: .9rem; }
+
+  /* Titres de section */
+  .eyebrow { color: var(--accent-2); font-size: .85rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+  .section-title { font-size: clamp(2rem, 5vw, 3.2rem); margin: 10px 0 40px; letter-spacing: -0.02em; }
+
+  /* Cartes */
+  .card {
+    background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius);
+    padding: 28px; position: relative; overflow: hidden;
+    transition: transform .3s, border-color .3s;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity .3s;
+    background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(255,111,97,.18), transparent 60%);
+    pointer-events: none;
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(255,111,97,.4); }
+  .card:hover::before { opacity: 1; }
+
+  /* À propos / domaines */
+  .domains { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .icon {
+    width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+    font-size: 1.4rem; margin-bottom: 18px;
+    background: linear-gradient(135deg, rgba(143,180,255,.22), rgba(255,255,255,.05));
+    border: 1px solid var(--card-border);
+  }
+  .card h3 { font-size: 1.25rem; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: .95rem; }
+
+  /* Projets */
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+  .filter {
+    padding: 8px 16px; border-radius: 999px; border: 1px solid var(--card-border);
+    background: transparent; color: var(--muted); font: inherit; font-size: .9rem; cursor: pointer;
+    transition: all .2s;
+  }
+  .filter:hover { color: var(--text); }
+  .filter.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .project { padding: 0; display: flex; flex-direction: column; }
+  .project.hide { display: none; }
+  .thumb { aspect-ratio: 16/10; position: relative; overflow: hidden; }
+  .thumb::after {
+    content: attr(data-label); position: absolute; inset: 0; display: grid; place-items: center;
+    font-family: "Space Grotesk"; font-weight: 700; font-size: 1.5rem; color: rgba(255,255,255,.9);
+    text-shadow: 0 4px 20px rgba(0,0,0,.4);
+  }
+  .thumb .shape {
+    position: absolute; inset: -20%;
+    transition: transform .6s;
+  }
+  .project:hover .shape { transform: scale(1.1) rotate(4deg); }
+  .project-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 16px; }
+  .tag { font-size: .75rem; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.06); color: var(--muted); }
+
+  /* Services */
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .service ul { list-style: none; margin-top: 16px; }
+  .service li { color: var(--muted); font-size: .92rem; padding: 6px 0; border-top: 1px solid var(--card-border); }
+  .service li::before { content: "→ "; color: var(--accent-2); }
+  .price { margin-top: 18px; font-family: "Space Grotesk"; font-size: 1.1rem; }
+  .price small { color: var(--muted); font-family: Inter; font-size: .8rem; }
+
+  /* Bandeau défilant */
+  .marquee { overflow: hidden; border-block: 1px solid var(--card-border); padding: 22px 0; margin-top: 60px; }
+  .marquee-track { display: flex; gap: 50px; width: max-content; animation: scroll 30s linear infinite; }
+  .marquee-track span { font-family: "Space Grotesk"; font-size: 1.6rem; color: var(--muted); white-space: nowrap; }
+  .marquee-track span:nth-child(odd) { color: var(--text); }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* Contact */
+  .contact { text-align: center; padding-bottom: 80px; }
+  .contact .card { padding: 60px 28px; }
+  .contact h2 { font-size: clamp(2.2rem, 6vw, 4rem); margin-bottom: 16px; }
+  .contact p { color: var(--muted); max-width: 520px; margin: 0 auto 30px; }
+  .socials { display: flex; justify-content: center; gap: 10px; margin-top: 26px; flex-wrap: wrap; }
+  .socials a { padding: 10px 18px; border-radius: 999px; border: 1px solid var(--card-border); color: var(--muted); font-size: .9rem; transition: color .2s, border-color .2s; }
+  .socials a:hover { color: var(--text); border-color: var(--accent); }
+  .form { max-width: 620px; margin: 0 auto; text-align: left; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field.full { grid-column: 1 / -1; }
+  .field label { font-size: .85rem; color: var(--muted); font-weight: 500; }
+  .field input, .field select, .field textarea {
+    font: inherit; color: var(--text); background: rgba(255,255,255,.04);
+    border: 1px solid var(--card-border); border-radius: 12px; padding: 13px 15px;
+    transition: border-color .2s, background .2s, box-shadow .2s;
+  }
+  .field textarea { min-height: 140px; resize: vertical; }
+  .field select option { background: var(--bg-2); }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none; border-color: var(--accent); background: rgba(255,111,97,.06);
+    box-shadow: 0 0 0 4px rgba(255,111,97,.15);
+  }
+  .field input:user-invalid, .field textarea:user-invalid { border-color: var(--accent-3); }
+  .hp { position: absolute; left: -9999px; }
+  .form .btn { grid-column: 1 / -1; border: 0; color: var(--text); font: inherit; font-weight: 600; cursor: pointer; justify-self: center; padding: 15px 34px; }
+  .form .btn:disabled { opacity: .6; cursor: wait; }
+  .form-status { grid-column: 1 / -1; text-align: center; font-size: .95rem; min-height: 1.5em; }
+  .form-status.ok { color: #2ee58f; }
+  .form-status.err { color: var(--accent-3); }
+  @media (max-width: 600px) { .form { grid-template-columns: 1fr; } }
+  footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 30px 16px 40px; }
+
+  /* Apparition au scroll */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .domains { grid-template-columns: repeat(2, 1fr); }
+    .projects, .services { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    .domains, .projects, .services { grid-template-columns: 1fr; }
+    .stats { gap: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="grain"></div>
+
+<nav>
+  <a href="#top" class="logo">clément<span>.</span></a>
+  <div class="nav-links">
+    <a href="#domaines">Domaines</a>
+    <a href="#projets">Projets</a>
+    <a href="#services">Services</a>
+  </div>
+  <a href="#contact" class="nav-cta">Contactez-moi</a>
+</nav>
+
+<section class="hero" id="top">
+  <div class="badge reveal"><span class="dot"></span> Disponible pour de nouveaux projets</div>
+  <h1 class="reveal">Salut, moi c'est <span class="grad">Clément</span>.<br>Je crée <span class="typed" id="typed">des sites web</span></h1>
+  <p class="reveal">Web, design, templates Notion, e-commerce et sport. Je construis des outils et des expériences qui font gagner du temps — avec l'IA comme accélérateur.</p>
+  <div class="hero-actions reveal">
+    <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+    <a href="#contact" class="btn btn-ghost">Travailler ensemble</a>
+  </div>
+  <div class="stats reveal">
+    <div class="stat"><b data-count="12">0</b><span>projets réalisés</span></div>
+    <div class="stat"><b data-count="4">0</b><span>domaines</span></div>
+    <div class="stat"><b data-count="100">0</b><span>% motivé</span></div>
+  </div>
+</section>
+
+<section id="domaines">
+  <div class="eyebrow reveal">Ce que je fais</div>
+  <h2 class="section-title reveal">Quatre terrains de jeu.</h2>
+  <div class="domains">
+    <div class="card reveal"><div class="icon">✦</div><h3>Web & design</h3><p>Sites vitrines, landing pages animées, interfaces modernes et responsive.</p></div>
+    <div class="card reveal"><div class="icon">▣</div><h3>Notion</h3><p>Templates, dashboards et systèmes d'organisation : études, projets, budget.</p></div>
+    <div class="card reveal"><div class="icon">◈</div><h3>E-commerce</h3><p>Boutiques Shopify, produits numériques, fiches produits et marketing.</p></div>
+    <div class="card reveal"><div class="icon">⚡</div><h3>Sport</h3><p>Plans d'entraînement, suivi de performance et analyse de données.</p></div>
+  </div>
+</section>
+
+<section id="projets">
+  <div class="eyebrow reveal">Réalisations</div>
+  <h2 class="section-title reveal">Projets sélectionnés.</h2>
+  <div class="filters reveal" role="tablist">
+    <button class="filter active" data-filter="all">Tous</button>
+    <button class="filter" data-filter="web">Web & design</button>
+    <button class="filter" data-filter="notion">Notion</button>
+    <button class="filter" data-filter="ecom">E-commerce</button>
+    <button class="filter" data-filter="sport">Sport</button>
+  </div>
+  <div class="projects">
+    <article class="card project reveal" data-cat="web">
+      <div class="thumb" data-label="Studio Landing"><div class="shape" style="background:radial-gradient(circle at 30% 30%,#3b6fd1,transparent 50%),radial-gradient(circle at 70% 70%,#ff6f61,transparent 50%),#0b1a33"></div></div>
+      <div class="project-body"><h3>Landing page animée</h3><p>Site vitrine pour une marque fictive, effets au scroll et fond WebGL.</p><div class="tags"><span class="tag">HTML/CSS</span><span class="tag">JS</span><span class="tag">Design</span></div></div>
+    </article>
+    <article class="card project reveal" data-cat="notion">
+      <div class="thumb" data-label="Study OS"><div class="shape" style="background:radial-gradient(circle at 60% 30%,#8fb4ff,transparent 50%),radial-gradient(circle at 20% 80%,#1e4fa8,transparent 50%),#0b1a33"></div></div>
+      <div class="project-body"><h3>Study OS — template Notion</h3><p>Système complet pour gérer cours, révisions, deadlines et notes.</p><div class="tags"><span class="tag">Notion</span><span class="tag">Productivité</span></div></div>
+    </article>
+    <article class="card project reveal" data-cat="ecom">
+      <div class="thumb" data-label="Digital Shop"><div class="shape" style="background:radial-gradient(circle at 40% 60%,#2a5bbf,transparent 50%),radial-gradient(circle at 80% 20%,#ffffff,transparent 45%),#0b1a33"></div></div>
+      <div class="project-body"><h3>Boutique de produits numériques</h3><p>Boutique Shopify : templates, guides et packs téléchargeables.</p><div class="tags"><span class="tag">Shopify</span><span class="tag">Marketing</span></div></div>
+    </article>
+    <article class="card project reveal" data-cat="sport">
+      <div class="thumb" data-label="Training Lab"><div class="shape" style="background:radial-gradient(circle at 50% 40%,#ff6f61,transparent 50%),radial-gradient(circle at 20% 70%,#3b6fd1,transparent 45%),#0b1a33"></div></div>
+      <div class="project-body"><h3>Dashboard d'entraînement</h3><p>Analyse sommeil, charge et récupération à partir de données Garmin.</p><div class="tags"><span class="tag">Data</span><span class="tag">Sport</span></div></div>
+    </article>
+    <article class="card project reveal" data-cat="notion">
+      <div class="thumb" data-label="Budget Hub"><div class="shape" style="background:radial-gradient(circle at 30% 70%,#5d8be6,transparent 50%),radial-gradient(circle at 75% 30%,#cfdcf5,transparent 45%),#0b1a33"></div></div>
+      <div class="project-body"><h3>Budget Hub</h3><p>Suivi de dépenses, objectifs d'épargne et vue mensuelle dans Notion.</p><div class="tags"><span class="tag">Notion</span><span class="tag">Finance perso</span></div></div>
+    </article>
+    <article class="card project reveal" data-cat="web">
+      <div class="thumb" data-label="Brand Kit"><div class="shape" style="background:radial-gradient(circle at 70% 60%,#1e4fa8,transparent 50%),radial-gradient(circle at 25% 25%,#ff6f61,transparent 45%),#0b1a33"></div></div>
+      <div class="project-body"><h3>Identité visuelle</h3><p>Logo, palette et kit réseaux sociaux pour un petit commerce.</p><div class="tags"><span class="tag">Branding</span><span class="tag">UI</span></div></div>
+    </article>
+  </div>
+</section>
+
+<section id="services">
+  <div class="eyebrow reveal">Services</div>
+  <h2 class="section-title reveal">Ce que je peux faire pour toi.</h2>
+  <div class="services">
+    <div class="card service reveal">
+      <div class="icon">✦</div><h3>Site web</h3><p>Un site moderne, rapide et qui convertit.</p>
+      <ul><li>Design sur mesure</li><li>Animations & responsive</li><li>Mise en ligne</li></ul>
+      <div class="price">À partir de 300 € <small>· exemple</small></div>
+    </div>
+    <div class="card service reveal">
+      <div class="icon">▣</div><h3>Setup Notion</h3><p>Ton espace organisé, clé en main.</p>
+      <ul><li>Analyse de tes besoins</li><li>Template personnalisé</li><li>Prise en main</li></ul>
+      <div class="price">À partir de 80 € <small>· exemple</small></div>
+    </div>
+    <div class="card service reveal">
+      <div class="icon">◈</div><h3>Boutique en ligne</h3><p>Lancer ta boutique Shopify sans galère.</p>
+      <ul><li>Création & thème</li><li>Fiches produits</li><li>Conseils de lancement</li></ul>
+      <div class="price">À partir de 400 € <small>· exemple</small></div>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Web design</span><span>✦</span><span>Notion</span><span>✦</span><span>Shopify</span><span>✦</span><span>Branding</span><span>✦</span><span>Sport & data</span><span>✦</span><span>IA</span><span>✦</span>
+      <span>Web design</span><span>✦</span><span>Notion</span><span>✦</span><span>Shopify</span><span>✦</span><span>Branding</span><span>✦</span><span>Sport & data</span><span>✦</span><span>IA</span><span>✦</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="card reveal">
+    <div class="eyebrow">Contactez-moi</div>
+    <h2>Un projet en tête ?<br><span class="grad">Parlons-en.</span></h2>
+    <p>Site, template Notion, boutique ou autre idée : remplis le formulaire, je te réponds vite.</p>
+    <form class="form" id="contact-form" novalidate>
+      <div class="field"><label for="f-name">Nom</label><input id="f-name" name="name" required autocomplete="name" placeholder="Ton nom"></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="toi@exemple.com"></div>
+      <div class="field full"><label for="f-subject">Sujet</label>
+        <select id="f-subject" name="subject">
+          <option>Site web</option><option>Template Notion</option><option>Boutique en ligne</option><option>Sport</option><option>Autre</option>
+        </select>
+      </div>
+      <div class="field full"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required minlength="10" placeholder="Décris ton projet en quelques lignes…"></textarea></div>
+      <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn btn-primary">Envoyer le message</button>
+      <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+    </form>
+    <div class="socials">
+      <a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a><a href="#">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Clément · Fait avec passion (et un peu d'IA)</footer>
+
+<script>
+  // Fond animé : orbes flous qui dérivent + suivent la souris
+  const c = document.getElementById('bg'), ctx = c.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w, h, mouse = { x: .5, y: .3 };
+  const orbs = [
+    { x: .2, y: .2, r: .45, c: [40, 90, 190], s: .00021 },
+    { x: .8, y: .3, r: .40, c: [143, 180, 255], s: .00017 },
+    { x: .5, y: .8, r: .38, c: [255, 111, 97], s: .00013 },
+  ];
+  function size() { w = c.width = innerWidth; h = c.height = innerHeight; }
+  size(); addEventListener('resize', size);
+  addEventListener('pointermove', e => { mouse.x = e.clientX / w; mouse.y = e.clientY / h; });
+  function draw(t) {
+    ctx.fillStyle = '#081428'; ctx.fillRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'lighter';
+    orbs.forEach((o, i) => {
+      const x = (o.x + Math.sin(t * o.s + i) * .15 + (mouse.x - .5) * .08) * w;
+      const y = (o.y + Math.cos(t * o.s * 1.3 + i) * .12 + (mouse.y - .5) * .08) * h;
+      const r = o.r * Math.max(w, h);
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, `rgba(${o.c},.22)`); g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    });
+    ctx.globalCompositeOperation = 'source-over';
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+  // Texte qui s'écrit
+  const words = ['des sites web', 'des templates Notion', 'des boutiques en ligne', 'des plans sport'];
+  const el = document.getElementById('typed');
+  if (!reduce) {
+    let wi = 0, ci = words[0].length, del = true;
+    setTimeout(function tick() {
+      const word = words[wi];
+      ci += del ? -1 : 1;
+      el.textContent = word.slice(0, ci);
+      let delay = del ? 45 : 85;
+      if (!del && ci === word.length) { del = true; delay = 1800; }
+      else if (del && ci === 0) { del = false; wi = (wi + 1) % words.length; delay = 300; }
+      setTimeout(tick, delay);
+    }, 1800);
+  }
+
+  // Apparition au scroll + compteurs
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('[data-count]').forEach(n => {
+      const end = +n.dataset.count, t0 = performance.now();
+      (function step(t) {
+        const p = Math.min((t - t0) / 1400, 1);
+        n.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+    });
+    io.unobserve(e.target);
+  }), { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach((n, i) => { n.style.transitionDelay = (i % 4) * 80 + 'ms'; io.observe(n); });
+
+  // Lumière qui suit la souris sur les cartes
+  document.querySelectorAll('.card').forEach(card => card.addEventListener('pointermove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', e.clientX - r.left + 'px');
+    card.style.setProperty('--my', e.clientY - r.top + 'px');
+  }));
+
+  // Filtres projets
+  document.querySelectorAll('.filter').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.filter').forEach(x => x.classList.toggle('active', x === b));
+    document.querySelectorAll('.project').forEach(p =>
+      p.classList.toggle('hide', b.dataset.filter !== 'all' && p.dataset.cat !== b.dataset.filter));
+  }));
+
+  // Formulaire de contact (envoi via Formspree)
+  // 1. Crée un formulaire gratuit sur https://formspree.io
+  // 2. Remplace REMPLACE_MOI par l'ID du formulaire (ex : "xyzabcd")
+  const FORMSPREE_ID = 'REMPLACE_MOI';
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    status.className = 'form-status';
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      status.textContent = 'Merci de remplir nom, email valide et message.';
+      status.classList.add('err');
+      return;
+    }
+    if (FORMSPREE_ID === 'REMPLACE_MOI') {
+      status.textContent = 'Formulaire pas encore connecté (ID Formspree manquant).';
+      status.classList.add('err');
+      return;
+    }
+    const btn = form.querySelector('button');
+    btn.disabled = true; btn.textContent = 'Envoi…';
+    try {
+      const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }
+      });
+      if (!res.ok) throw new Error(res.status);
+      form.reset();
+      status.textContent = 'Message envoyé ! Je te réponds très vite.';
+      status.classList.add('ok');
+    } catch {
+      status.textContent = "Oups, l'envoi a échoué. Réessaie dans un instant.";
+      status.classList.add('err');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Envoyer le message';
+    }
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
