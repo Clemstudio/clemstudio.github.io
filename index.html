@@ -58,6 +58,7 @@
     transition: color .2s, background .2s;
   }
   .nav-links a:hover { color: var(--text); background: rgba(255,255,255,.06); }
+  .nav-toggle { display: none; background: none; border: 0; color: var(--text); font-size: 1.4rem; cursor: pointer; padding: 4px 10px; }
   .nav-cta {
     padding: 8px 16px; border-radius: 999px; font-size: .9rem; font-weight: 600;
     background: var(--text); color: var(--bg);
@@ -207,7 +208,13 @@
   @media (max-width: 900px) {
     .domains { grid-template-columns: repeat(2, 1fr); }
     .projects, .services { grid-template-columns: 1fr 1fr; }
-    .nav-links { display: none; }
+    .nav-toggle { display: block; margin-left: auto; margin-right: 6px; }
+    .nav-links {
+      display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+      flex-direction: column; padding: 10px; border-radius: var(--radius);
+      background: rgba(8,20,40,.95); border: 1px solid var(--card-border);
+    }
+    nav.open .nav-links { display: flex; }
   }
   @media (max-width: 600px) {
     .domains, .projects, .services { grid-template-columns: 1fr; }
@@ -225,11 +232,12 @@
 
 <nav>
   <a href="#top" class="logo">Haut de page<span>.</span></a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="#domaines">Domaines</a>
     <a href="#projets">Projets</a>
     <a href="#services">Services</a>
   </div>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
   <a href="#contact" class="nav-cta">Contactez-moi</a>
 </nav>
 
@@ -352,6 +360,11 @@
 <footer>© <span id="year"></span> Clément · Fait avec passion (et un peu d'IA)</footer>
 
 <script>
+  // Menu mobile
+  const nav = document.querySelector('nav'), navBtn = nav.querySelector('.nav-toggle');
+  const setNav = open => { nav.classList.toggle('open', open); navBtn.setAttribute('aria-expanded', open); navBtn.textContent = open ? '✕' : '☰'; };
+  navBtn.addEventListener('click', () => setNav(!nav.classList.contains('open')));
+  nav.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => setNav(false)));
   // Fond animé : orbes flous qui dérivent + suivent la souris
   const c = document.getElementById('bg'), ctx = c.getContext('2d');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
