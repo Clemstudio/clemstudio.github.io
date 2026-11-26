@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-26T16:00:00",
+  "maj": "2026-11-26T17:05:00",
   "zones": [
     {
       "nom": "Pringy",
@@ -48,8 +48,8 @@
       "role": "Prospection",
       "equipe": "business",
       "couleur": "#e8590c",
-      "statut": "travail",
-      "mission": "Exemple : cherche des fleuristes à Seynod"
+      "statut": "repos",
+      "mission": ""
     },
     {
       "id": "auditeur-web",
@@ -75,8 +75,8 @@
       "role": "Fiches de révision",
       "equipe": "etudes",
       "couleur": "#2b8a3e",
-      "statut": "travail",
-      "mission": "Exemple : fiche sur un cours déposé"
+      "statut": "repos",
+      "mission": ""
     },
     {
       "id": "quiz-ifsi",
@@ -99,12 +99,11 @@
   ],
   "missions": [
     {
-      "id": "m1",
-      "titre": "Exemple : prospecter des fleuristes à Seynod",
+      "id": "m-projet-1",
+      "titre": "Trouver un nouveau projet client (secteurs au choix)",
       "agent": "prospecteur",
-      "statut": "en_cours",
-      "date": "2026-11-26",
-      "exemple": true
+      "statut": "fait",
+      "date": "2026-11-26"
     }
   ],
   "taches": [
@@ -130,66 +129,36 @@
       "echeance": null
     },
     {
-      "id": "t4",
-      "titre": "Exemple : relire le message pour la boulangerie",
-      "colonne": "en_cours",
-      "tag": "business",
-      "echeance": null,
-      "exemple": true
-    },
-    {
       "id": "t5",
       "titre": "Installer l'Atelier OS",
       "colonne": "fait",
       "tag": "business",
       "echeance": "2026-11-26"
+    },
+    {
+      "id": "t-cesardes",
+      "titre": "Vérifier site et contact de Menuiserie des Cesardes (Seynod) avant d'envoyer le message",
+      "colonne": "a_faire",
+      "tag": "business",
+      "echeance": "2026-11-30",
+      "source": "qg"
     }
   ],
   "prospects": [
     {
-      "id": "exemple-boulangerie",
-      "entreprise": "Boulangerie exemple",
-      "secteur": "Boulangerie",
+      "id": "menuiserie-des-cesardes",
+      "entreprise": "Menuiserie des Cesardes (Ascenso)",
+      "secteur": "Menuiserie bois/PVC",
       "zone": "Seynod",
-      "x": 245,
-      "y": 368,
+      "x": 172,
+      "y": 318,
       "site": null,
       "score": null,
-      "probleme": "Pas de site, seulement une fiche Google",
-      "contact": "à trouver",
+      "probleme": "Aucun site trouvé (à confirmer : un site « Ascenso » existe peut-être)",
+      "contact": "Non vérifié : annuaires inaccessibles depuis la session",
+      "source": "https://api-avis-situation-sirene.insee.fr/identification/pdf/39277539100023",
       "statut": "a_contacter",
-      "message": "",
-      "exemple": true
-    },
-    {
-      "id": "exemple-garage",
-      "entreprise": "Garage exemple",
-      "secteur": "Garage",
-      "zone": "Cran-Gevrier",
-      "x": 150,
-      "y": 255,
-      "site": "exemple.fr",
-      "score": 38,
-      "probleme": "Site non adapté au mobile",
-      "contact": "à trouver",
-      "statut": "contacte",
-      "message": "",
-      "exemple": true
-    },
-    {
-      "id": "exemple-salon",
-      "entreprise": "Salon de coiffure exemple",
-      "secteur": "Coiffure",
-      "zone": "Annecy centre",
-      "x": 335,
-      "y": 245,
-      "site": "exemple.fr",
-      "score": 55,
-      "probleme": "Pas de prise de rendez-vous en ligne",
-      "contact": "à trouver",
-      "statut": "repondu",
-      "message": "",
-      "exemple": true
+      "message": "Bonjour, En cherchant une menuiserie à Seynod, j'ai trouvé Menuiserie des Cesardes sur des annuaires professionnels, mais je n'ai trouvé aucun site à votre nom. Pour un client qui compare des devis de fenêtres ou de portes, un site simple avec vos réalisations et un formulaire de contact peut faire la différence. Je m'appelle Clément, je crée des sites web pour les artisans à Annecy (Clem Studio). Seriez-vous d'accord pour un échange de 15 minutes, par téléphone ou à l'atelier, quand cela vous arrange ? Sans engagement. Bonne journée, Clément, Clem Studio. Si vous ne souhaitez plus recevoir de messages de ma part, répondez simplement « non merci » et je ne vous recontacterai pas."
     }
   ],
   "clients": [
@@ -247,6 +216,16 @@
     ]
   },
   "activite": [
+    {
+      "date": "2026-11-26T17:05:00",
+      "agent": "chef",
+      "texte": "Mission « nouveau projet » : 1 piste partielle. Recherche limitée car les annuaires (Bottin, PagesJaunes…) sont bloqués par le réseau de la session."
+    },
+    {
+      "date": "2026-11-26T17:04:00",
+      "agent": "prospecteur",
+      "texte": "1 prospect partiel (Menuiserie des Cesardes, Seynod, contact non vérifié) ; 3 pistes écartées (fermée, déjà un site…)."
+    },
     {
       "date": "2026-11-26T16:45:00",
       "agent": "chef",
