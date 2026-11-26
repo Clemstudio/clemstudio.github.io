@@ -178,7 +178,7 @@ td.num { font-family: var(--font-mono); text-align: right; font-variant-numeric:
   </nav>
 
   <main id="view"></main>
-  <p class="notice">Les éléments marqués « exemple » sont fictifs. Ils seront remplacés quand les agents rapporteront de vraies données. Pour lancer une mission, tape <span class="mono">/noam …</span> dans Claude Code.</p>
+  <p class="notice">Les éléments marqués « exemple » sont fictifs. Ils seront remplacés quand les agents rapporteront de vraies données. Pour lancer une mission, tape <span class="mono">/chef …</span> dans Claude Code.</p>
 </div>
 
 <script>
@@ -216,7 +216,7 @@ function desk(a) {
 }
 
 function vBureau() {
-  const noam = agent("noam");
+  const chef = agent("chef");
   const room = (eq, titre) => {
     const list = S.agents.filter((a) => a.equipe === eq);
     const busy = list.filter((a) => a.statut === "travail").length;
@@ -227,10 +227,10 @@ function vBureau() {
   return `<div class="grid-2">
     <div style="display:grid;gap:16px;min-width:0">
       <div class="hq">
-        <div class="who"><div class="avatar lg" style="background:${esc(noam.couleur)}">N</div>
-          <div><div class="label">Bureau du chef</div><h2>Noam répartit les missions</h2>
+        <div class="who"><div class="avatar lg" style="background:${esc(chef.couleur)}">C</div>
+          <div><div class="label">Bureau du chef</div><h2>Le chef répartit les missions</h2>
           <div class="muted">${enCours.length} mission${enCours.length > 1 ? "s" : ""} en cours</div></div></div>
-        <div class="cmd">/noam prospecte 3 fleuristes à Seynod</div>
+        <div class="cmd">/chef prospecte 3 fleuristes à Seynod</div>
       </div>
       <div class="rooms">${room("business", "Équipe Business")}${room("etudes", "Équipe Études")}</div>
     </div>
@@ -263,7 +263,7 @@ function vCarte() {
         ${sel.audit ? `<dt>Audit</dt><dd class="mono">${esc(sel.audit)}</dd>` : ""}
       </dl>
       ${sel.message ? `<div class="label">Message proposé</div><div class="card">${esc(sel.message)}</div>` : ""}
-    </div>` : empty("Aucun prospect. Lance <span class='mono'>/noam prospecte …</span>");
+    </div>` : empty("Aucun prospect. Lance <span class='mono'>/chef prospecte …</span>");
   return `<div class="grid-2">
     <section class="panel">
       <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:baseline"><h2>Carte de prospection</h2><span class="label">Plan schématique · Annecy</span></div>
@@ -318,7 +318,7 @@ function vClients() {
 function vContenu() {
   const C = S.contenus || [];
   return `<section class="panel"><h2>Contenus</h2>${C.length ? `<div class="table-wrap"><table><thead><tr><th>Titre</th><th>Plateforme</th><th>Statut</th><th>Fichier</th></tr></thead>
-    <tbody>${C.map((c) => `<tr><td>${esc(c.titre)}${ex(c)}</td><td>${esc(c.plateforme)}</td><td>${esc(c.statut)}</td><td class="mono">${c.fichier ? esc(c.fichier) : "—"}</td></tr>`).join("")}</tbody></table></div>` : empty("Aucun contenu. Lance <span class='mono'>/noam écris 3 scripts TikTok …</span>")}</section>`;
+    <tbody>${C.map((c) => `<tr><td>${esc(c.titre)}${ex(c)}</td><td>${esc(c.plateforme)}</td><td>${esc(c.statut)}</td><td class="mono">${c.fichier ? esc(c.fichier) : "—"}</td></tr>`).join("")}</tbody></table></div>` : empty("Aucun contenu. Lance <span class='mono'>/chef écris 3 scripts TikTok …</span>")}</section>`;
 }
 
 function vEtudes() {
@@ -326,10 +326,10 @@ function vEtudes() {
   const Pl = (E.planning || []).slice().sort((a, b) => String(a.date).localeCompare(String(b.date)));
   return `<div class="grid-2">
     <div style="display:grid;gap:16px;min-width:0">
-      <section class="panel"><h2>Fiches de révision</h2>${F.length ? F.map((f) => `<div class="card"><div><b>${esc(f.titre)}</b>${ex(f)}</div><div class="meta">${f.ue ? `<span class="tag etudes">${esc(f.ue)}</span>` : ""}<span>${esc(f.statut).replace("_", " ")}</span>${f.fichier ? `<span class="mono">${esc(f.fichier)}</span>` : ""}</div></div>`).join("") : empty("Dépose tes cours dans os/cours/ puis lance /noam fais une fiche sur …")}</section>
+      <section class="panel"><h2>Fiches de révision</h2>${F.length ? F.map((f) => `<div class="card"><div><b>${esc(f.titre)}</b>${ex(f)}</div><div class="meta">${f.ue ? `<span class="tag etudes">${esc(f.ue)}</span>` : ""}<span>${esc(f.statut).replace("_", " ")}</span>${f.fichier ? `<span class="mono">${esc(f.fichier)}</span>` : ""}</div></div>`).join("") : empty("Dépose tes cours dans os/cours/ puis lance /chef fais une fiche sur …")}</section>
       <section class="panel"><h2>Quiz & calculs de doses</h2>${Q.length ? Q.map((q) => `<div class="card"><div><b>${esc(q.titre)}</b>${ex(q)}</div><div class="meta"><span class="mono">${q.questions ?? "?"} questions</span><span>· score ${q.score == null ? "à faire" : esc(q.score)}</span></div></div>`).join("") : empty("Aucun quiz.")}</section>
     </div>
-    <aside class="panel"><h2>Planning</h2>${Pl.length ? `<ul class="feed">${Pl.map((p) => `<li><span class="dot" style="background:var(--st-${p.type === "partiel" ? "sent" : p.type === "stage" ? "client" : "new"})"></span><div><time>${fmtDate(p.date)} · ${esc(p.type)}</time>${esc(p.titre)}</div></li>`).join("")}</ul>` : empty("Pas encore de dates. Donne à Jade tes dates de partiels et de stage : <span class='mono'>/noam planning …</span>")}</aside>
+    <aside class="panel"><h2>Planning</h2>${Pl.length ? `<ul class="feed">${Pl.map((p) => `<li><span class="dot" style="background:var(--st-${p.type === "partiel" ? "sent" : p.type === "stage" ? "client" : "new"})"></span><div><time>${fmtDate(p.date)} · ${esc(p.type)}</time>${esc(p.titre)}</div></li>`).join("")}</ul>` : empty("Pas encore de dates. Donne à Jade tes dates de partiels et de stage : <span class='mono'>/chef planning …</span>")}</aside>
   </div>`;
 }
 
@@ -360,7 +360,7 @@ fetch("data/state.json", { cache: "no-store" })
   .then((d) => { S = d; header(); render(); })
   .catch((e) => {
     document.getElementById("maj").textContent = "Données introuvables";
-    document.getElementById("view").innerHTML = `<div class="err"><b>Impossible de lire data/state.json</b> (${esc(e.message)}). Republie le tableau de bord avec /noam pour joindre le fichier de données.</div>`;
+    document.getElementById("view").innerHTML = `<div class="err"><b>Impossible de lire data/state.json</b> (${esc(e.message)}). Republie le tableau de bord avec /chef pour joindre le fichier de données.</div>`;
   });
 window.addEventListener("hashchange", render);
 </script>

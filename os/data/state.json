@@ -9,7 +9,7 @@
     {"nom": "Seynod", "x": 200, "y": 340}
   ],
   "agents": [
-    {"id": "noam", "nom": "Noam", "role": "Chef d'équipe", "equipe": "direction", "couleur": "#3b5bdb", "statut": "repos", "mission": ""},
+    {"id": "chef", "nom": "Chef", "role": "Chef d'équipe", "equipe": "direction", "couleur": "#3b5bdb", "statut": "repos", "mission": ""},
     {"id": "prospecteur", "nom": "Malo", "role": "Prospection", "equipe": "business", "couleur": "#e8590c", "statut": "travail", "mission": "Exemple : cherche des fleuristes à Seynod"},
     {"id": "auditeur-web", "nom": "Iris", "role": "Audit de sites", "equipe": "business", "couleur": "#0c8599", "statut": "repos", "mission": ""},
     {"id": "redacteur-contenu", "nom": "Lou", "role": "Contenu TikTok", "equipe": "business", "couleur": "#c2255c", "statut": "repos", "mission": ""},
@@ -23,7 +23,7 @@
   "taches": [
     {"id": "t1", "titre": "Déposer mes cours dans os/cours/", "colonne": "a_faire", "tag": "etudes", "echeance": null},
     {"id": "t2", "titre": "Donner à Jade les dates de partiels et de stage", "colonne": "a_faire", "tag": "etudes", "echeance": null},
-    {"id": "t3", "titre": "Lancer une première prospection avec /noam", "colonne": "a_faire", "tag": "business", "echeance": null},
+    {"id": "t3", "titre": "Lancer une première prospection avec /chef", "colonne": "a_faire", "tag": "business", "echeance": null},
     {"id": "t4", "titre": "Exemple : relire le message pour la boulangerie", "colonne": "en_cours", "tag": "business", "echeance": null, "exemple": true},
     {"id": "t5", "titre": "Installer l'Atelier OS", "colonne": "fait", "tag": "business", "echeance": "2026-11-26"}
   ],
@@ -51,6 +51,6 @@
     "planning": []
   },
   "activite": [
-    {"date": "2026-11-26T16:00:00", "agent": "noam", "texte": "Atelier OS installé. Les éléments marqués « exemple » disparaîtront avec les vraies données."}
+    {"date": "2026-11-26T16:00:00", "agent": "chef", "texte": "Atelier OS installé. Les éléments marqués « exemple » disparaîtront avec les vraies données."}
   ]
 }
