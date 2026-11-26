@@ -1,56 +1,271 @@
 {
   "maj": "2026-11-26T16:00:00",
   "zones": [
-    {"nom": "Pringy", "x": 330, "y": 50},
-    {"nom": "Meythet", "x": 170, "y": 150},
-    {"nom": "Annecy-le-Vieux", "x": 410, "y": 140},
-    {"nom": "Cran-Gevrier", "x": 160, "y": 245},
-    {"nom": "Annecy centre", "x": 300, "y": 215},
-    {"nom": "Seynod", "x": 200, "y": 340}
+    {
+      "nom": "Pringy",
+      "x": 330,
+      "y": 50
+    },
+    {
+      "nom": "Meythet",
+      "x": 170,
+      "y": 150
+    },
+    {
+      "nom": "Annecy-le-Vieux",
+      "x": 410,
+      "y": 140
+    },
+    {
+      "nom": "Cran-Gevrier",
+      "x": 160,
+      "y": 245
+    },
+    {
+      "nom": "Annecy centre",
+      "x": 300,
+      "y": 215
+    },
+    {
+      "nom": "Seynod",
+      "x": 200,
+      "y": 340
+    }
   ],
   "agents": [
-    {"id": "chef", "nom": "Chef", "role": "Chef d'équipe", "equipe": "direction", "couleur": "#3b5bdb", "statut": "repos", "mission": ""},
-    {"id": "prospecteur", "nom": "Malo", "role": "Prospection", "equipe": "business", "couleur": "#e8590c", "statut": "travail", "mission": "Exemple : cherche des fleuristes à Seynod"},
-    {"id": "auditeur-web", "nom": "Iris", "role": "Audit de sites", "equipe": "business", "couleur": "#0c8599", "statut": "repos", "mission": ""},
-    {"id": "redacteur-contenu", "nom": "Lou", "role": "Contenu TikTok", "equipe": "business", "couleur": "#c2255c", "statut": "repos", "mission": ""},
-    {"id": "tuteur-ifsi", "nom": "Ana", "role": "Fiches de révision", "equipe": "etudes", "couleur": "#2b8a3e", "statut": "travail", "mission": "Exemple : fiche sur un cours déposé"},
-    {"id": "quiz-ifsi", "nom": "Théo", "role": "QCM & calculs de doses", "equipe": "etudes", "couleur": "#7048e8", "statut": "repos", "mission": ""},
-    {"id": "planificateur", "nom": "Jade", "role": "Planning", "equipe": "etudes", "couleur": "#e67700", "statut": "repos", "mission": ""}
+    {
+      "id": "chef",
+      "nom": "Chef",
+      "role": "Chef d'équipe",
+      "equipe": "direction",
+      "couleur": "#3b5bdb",
+      "statut": "repos",
+      "mission": ""
+    },
+    {
+      "id": "prospecteur",
+      "nom": "Malo",
+      "role": "Prospection",
+      "equipe": "business",
+      "couleur": "#e8590c",
+      "statut": "travail",
+      "mission": "Exemple : cherche des fleuristes à Seynod"
+    },
+    {
+      "id": "auditeur-web",
+      "nom": "Iris",
+      "role": "Audit de sites",
+      "equipe": "business",
+      "couleur": "#0c8599",
+      "statut": "repos",
+      "mission": ""
+    },
+    {
+      "id": "redacteur-contenu",
+      "nom": "Lou",
+      "role": "Contenu TikTok",
+      "equipe": "business",
+      "couleur": "#c2255c",
+      "statut": "repos",
+      "mission": ""
+    },
+    {
+      "id": "tuteur-ifsi",
+      "nom": "Ana",
+      "role": "Fiches de révision",
+      "equipe": "etudes",
+      "couleur": "#2b8a3e",
+      "statut": "travail",
+      "mission": "Exemple : fiche sur un cours déposé"
+    },
+    {
+      "id": "quiz-ifsi",
+      "nom": "Théo",
+      "role": "QCM & calculs de doses",
+      "equipe": "etudes",
+      "couleur": "#7048e8",
+      "statut": "repos",
+      "mission": ""
+    },
+    {
+      "id": "planificateur",
+      "nom": "Jade",
+      "role": "Planning",
+      "equipe": "etudes",
+      "couleur": "#e67700",
+      "statut": "repos",
+      "mission": ""
+    }
   ],
   "missions": [
-    {"id": "m1", "titre": "Exemple : prospecter des fleuristes à Seynod", "agent": "prospecteur", "statut": "en_cours", "date": "2026-11-26", "exemple": true}
+    {
+      "id": "m1",
+      "titre": "Exemple : prospecter des fleuristes à Seynod",
+      "agent": "prospecteur",
+      "statut": "en_cours",
+      "date": "2026-11-26",
+      "exemple": true
+    }
   ],
   "taches": [
-    {"id": "t1", "titre": "Déposer mes cours dans os/cours/", "colonne": "a_faire", "tag": "etudes", "echeance": null},
-    {"id": "t2", "titre": "Donner à Jade les dates de partiels et de stage", "colonne": "a_faire", "tag": "etudes", "echeance": null},
-    {"id": "t3", "titre": "Lancer une première prospection avec /chef", "colonne": "a_faire", "tag": "business", "echeance": null},
-    {"id": "t4", "titre": "Exemple : relire le message pour la boulangerie", "colonne": "en_cours", "tag": "business", "echeance": null, "exemple": true},
-    {"id": "t5", "titre": "Installer l'Atelier OS", "colonne": "fait", "tag": "business", "echeance": "2026-11-26"}
+    {
+      "id": "t1",
+      "titre": "Déposer mes cours dans os/cours/",
+      "colonne": "a_faire",
+      "tag": "etudes",
+      "echeance": null
+    },
+    {
+      "id": "t2",
+      "titre": "Donner à Jade les dates de partiels et de stage",
+      "colonne": "a_faire",
+      "tag": "etudes",
+      "echeance": null
+    },
+    {
+      "id": "t3",
+      "titre": "Lancer une première prospection avec /chef",
+      "colonne": "a_faire",
+      "tag": "business",
+      "echeance": null
+    },
+    {
+      "id": "t4",
+      "titre": "Exemple : relire le message pour la boulangerie",
+      "colonne": "en_cours",
+      "tag": "business",
+      "echeance": null,
+      "exemple": true
+    },
+    {
+      "id": "t5",
+      "titre": "Installer l'Atelier OS",
+      "colonne": "fait",
+      "tag": "business",
+      "echeance": "2026-11-26"
+    }
   ],
   "prospects": [
-    {"id": "exemple-boulangerie", "entreprise": "Boulangerie exemple", "secteur": "Boulangerie", "zone": "Seynod", "x": 245, "y": 368, "site": null, "score": null, "probleme": "Pas de site, seulement une fiche Google", "contact": "à trouver", "statut": "a_contacter", "message": "", "exemple": true},
-    {"id": "exemple-garage", "entreprise": "Garage exemple", "secteur": "Garage", "zone": "Cran-Gevrier", "x": 150, "y": 255, "site": "exemple.fr", "score": 38, "probleme": "Site non adapté au mobile", "contact": "à trouver", "statut": "contacte", "message": "", "exemple": true},
-    {"id": "exemple-salon", "entreprise": "Salon de coiffure exemple", "secteur": "Coiffure", "zone": "Annecy centre", "x": 335, "y": 245, "site": "exemple.fr", "score": 55, "probleme": "Pas de prise de rendez-vous en ligne", "contact": "à trouver", "statut": "repondu", "message": "", "exemple": true}
+    {
+      "id": "exemple-boulangerie",
+      "entreprise": "Boulangerie exemple",
+      "secteur": "Boulangerie",
+      "zone": "Seynod",
+      "x": 245,
+      "y": 368,
+      "site": null,
+      "score": null,
+      "probleme": "Pas de site, seulement une fiche Google",
+      "contact": "à trouver",
+      "statut": "a_contacter",
+      "message": "",
+      "exemple": true
+    },
+    {
+      "id": "exemple-garage",
+      "entreprise": "Garage exemple",
+      "secteur": "Garage",
+      "zone": "Cran-Gevrier",
+      "x": 150,
+      "y": 255,
+      "site": "exemple.fr",
+      "score": 38,
+      "probleme": "Site non adapté au mobile",
+      "contact": "à trouver",
+      "statut": "contacte",
+      "message": "",
+      "exemple": true
+    },
+    {
+      "id": "exemple-salon",
+      "entreprise": "Salon de coiffure exemple",
+      "secteur": "Coiffure",
+      "zone": "Annecy centre",
+      "x": 335,
+      "y": 245,
+      "site": "exemple.fr",
+      "score": 55,
+      "probleme": "Pas de prise de rendez-vous en ligne",
+      "contact": "à trouver",
+      "statut": "repondu",
+      "message": "",
+      "exemple": true
+    }
   ],
   "clients": [
-    {"nom": "Client exemple", "projet": "Site vitrine 5 pages", "montant": 900, "statut": "en_cours", "exemple": true}
+    {
+      "nom": "Client exemple",
+      "projet": "Site vitrine 5 pages",
+      "montant": 900,
+      "statut": "en_cours",
+      "exemple": true
+    }
   ],
   "propositions": [
-    {"client": "Salon de coiffure exemple", "objet": "Refonte + prise de RDV", "montant": 1200, "statut": "envoyee", "exemple": true}
+    {
+      "client": "Salon de coiffure exemple",
+      "objet": "Refonte + prise de RDV",
+      "montant": 1200,
+      "statut": "envoyee",
+      "exemple": true
+    }
   ],
   "contenus": [
-    {"titre": "Exemple : 3 erreurs sur le site d'un commerce", "plateforme": "TikTok", "statut": "brouillon", "fichier": null, "exemple": true}
+    {
+      "titre": "Exemple : 3 erreurs sur le site d'un commerce",
+      "plateforme": "TikTok",
+      "statut": "brouillon",
+      "fichier": null,
+      "exemple": true
+    }
   ],
   "etudes": {
     "fiches": [
-      {"titre": "Exemple : fiche à partir d'un cours", "ue": null, "statut": "a_faire", "fichier": null, "exemple": true}
+      {
+        "titre": "Exemple : fiche à partir d'un cours",
+        "ue": null,
+        "statut": "a_faire",
+        "fichier": null,
+        "exemple": true
+      }
     ],
     "quiz": [
-      {"titre": "Exemple : calculs de doses", "questions": 10, "score": null, "fichier": null, "exemple": true}
+      {
+        "titre": "Exemple : calculs de doses",
+        "questions": 10,
+        "score": null,
+        "fichier": null,
+        "exemple": true
+      }
     ],
-    "planning": []
+    "planning": [
+      {
+        "date": "2027-01-26",
+        "type": "partiel",
+        "titre": "Partiels S1 (jusqu'au 29 janv., horaires à confirmer)"
+      }
+    ]
   },
   "activite": [
-    {"date": "2026-11-26T16:00:00", "agent": "chef", "texte": "Atelier OS installé. Les éléments marqués « exemple » disparaîtront avec les vraies données."}
+    {
+      "date": "2026-11-26T16:30:00",
+      "agent": "chef",
+      "texte": "OS relié au QG : les nouvelles tâches vont dans Notion (Ta journée), les contenus dans Notion Contenus."
+    },
+    {
+      "date": "2026-11-26T16:00:00",
+      "agent": "chef",
+      "texte": "Atelier OS installé. Les éléments marqués « exemple » disparaîtront avec les vraies données."
+    }
+  ],
+  "liens": [
+    {
+      "nom": "Mon QG",
+      "url": "https://claude.ai/artifact/8g5GF3xUmpV8jQn8GqE9qr"
+    },
+    {
+      "nom": "Révisions IFSI",
+      "url": "https://claude.ai/artifact/WCo7pX9osSfe2FfhBPRgg3"
+    }
   ]
 }

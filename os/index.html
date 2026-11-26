@@ -62,6 +62,9 @@ h2 { font-size: 1.05rem; font-weight: 600; }
 .brand h1 { font-size: 1.35rem; font-weight: 700; letter-spacing: -.01em; }
 .stats { display: flex; flex-wrap: wrap; gap: 8px; }
 .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 6px 12px; display: grid; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; }
+.links a { color: var(--accent); background: var(--accent-soft); text-decoration: none; font-weight: 600; font-size: .85rem; padding: 7px 12px; border-radius: 9px; }
+.links a:hover { text-decoration: underline; }
 .stat b { font-family: var(--font-mono); font-size: 1.05rem; font-weight: 500; }
 
 /* onglets */
@@ -162,6 +165,7 @@ td.num { font-family: var(--font-mono); text-align: right; font-variant-numeric:
         <div class="muted" id="maj">Chargement…</div>
       </div>
     </div>
+    <div class="links" id="links"></div>
     <div class="stats" id="stats"></div>
   </header>
 
@@ -290,7 +294,7 @@ function vTaches() {
   return `<div class="kanban">${Object.entries(COL).map(([k, v]) => {
     const items = T.filter((t) => t.colonne === k);
     return `<section class="col"><div style="display:flex;justify-content:space-between"><h2>${v}</h2><span class="label mono">${items.length}</span></div>
-      ${items.map((t) => `<div class="card"><div>${esc(t.titre)}${ex(t)}</div><div class="meta"><span class="tag ${t.tag === "etudes" ? "etudes" : ""}">${t.tag === "etudes" ? "Études" : "Business"}</span>${t.echeance ? `<span class="mono">${fmtDate(t.echeance)}</span>` : ""}</div></div>`).join("") || empty("Rien ici.")}
+      ${items.map((t) => `<div class="card"><div>${esc(t.titre)}${ex(t)}</div><div class="meta"><span class="tag ${t.tag === "etudes" ? "etudes" : ""}">${t.tag === "etudes" ? "Études" : "Business"}</span>${t.source === "qg" ? '<span class="tag">aussi dans le QG</span>' : ""}${t.echeance ? `<span class="mono">${fmtDate(t.echeance)}</span>` : ""}</div></div>`).join("") || empty("Rien ici.")}
     </section>`;
   }).join("")}</div>`;
 }
@@ -352,6 +356,7 @@ function header() {
   const real = (arr) => (arr || []).filter((x) => !x.exemple).length;
   const working = (S.agents || []).filter((a) => a.statut === "travail").length;
   const st = [["Agents au travail", working + "/" + (S.agents || []).length], ["Prospects", real(S.prospects)], ["Clients", real(S.clients)], ["Fiches", real((S.etudes || {}).fiches)]];
+  document.getElementById("links").innerHTML = (S.liens || []).map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.nom)} ↗</a>`).join("");
   document.getElementById("stats").innerHTML = st.map(([l, v]) => `<div class="stat"><span class="label">${l}</span><b>${v}</b></div>`).join("");
 }
 
