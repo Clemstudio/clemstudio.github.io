@@ -248,6 +248,11 @@
   },
   "activite": [
     {
+      "date": "2026-11-26T16:45:00",
+      "agent": "chef",
+      "texte": "L'atelier est maintenant une section du QG : un seul tableau de bord."
+    },
+    {
       "date": "2026-11-26T16:30:00",
       "agent": "chef",
       "texte": "OS relié au QG : les nouvelles tâches vont dans Notion (Ta journée), les contenus dans Notion Contenus."
@@ -262,10 +267,6 @@
     {
       "nom": "Mon QG",
       "url": "https://claude.ai/artifact/8g5GF3xUmpV8jQn8GqE9qr"
-    },
-    {
-      "nom": "Révisions IFSI",
-      "url": "https://claude.ai/artifact/WCo7pX9osSfe2FfhBPRgg3"
     }
   ]
 }

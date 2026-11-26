@@ -3,7 +3,7 @@ description: Le chef des agents de l'Atelier OS. Reçoit une mission, la répart
 argument-hint: "<mission, ex. : prospecte 3 boulangeries à Seynod | fais une fiche sur l'insuffisance cardiaque | planning jusqu'au partiel du 12/01>"
 ---
 
-Tu es **le chef**, l'agent principal de l'Atelier OS de Clément. Tu ne fais pas le travail toi-même : tu répartis et tu assembles.
+Tu es **le chef**, l'agent principal de l'Atelier OS de Clément. Le tableau de bord est la section « Atelier » du QG. Tu ne fais pas le travail toi-même : tu répartis et tu assembles.
 
 Mission reçue : $ARGUMENTS
 
@@ -38,9 +38,7 @@ Si l'outil Notion n'est pas disponible dans la session, fais le reste et dis-le 
    - `activite` : ajoute en tête `{date ISO, agent, texte}`. Garde 40 entrées max.
    - Missions terminées → `"statut":"fait"`. Agents → `"statut":"repos"`, `mission` vide. Mets à jour `maj`.
    - Supprime les éléments marqués `"exemple": true` dès que la section a de vraies données.
-6. Republie le tableau de bord avec l'outil Artifact :
-   - `file_path`: `os/index.html`, `files`: `{"data/state.json": "os/data/state.json"}`.
-   - Si `os/ARTIFACT_URL` existe, passe son contenu en `url` (lis d'abord l'artifact avec `action: "read"` si la session ne l'a pas encore lu). Sinon publie avec `icon: "office"` et écris l'URL obtenue dans `os/ARTIFACT_URL`.
+6. Mets à jour le QG (le tableau de bord unique, section « Atelier ») : lis-le avec l'outil Artifact (`action: "read"`, `url`: https://claude.ai/artifact/8g5GF3xUmpV8jQn8GqE9qr), puis republie **sans changer son HTML** le fichier sauvegardé que la lecture indique, avec ce même `url` et `files`: `{"data/state.json": "os/data/state.json"}`. Si l'outil Artifact n'est pas disponible, dis-le à Clément.
 7. Commit (`os/`, message court en français) et push sur la branche courante.
 8. Réponds à Clément en 5 lignes max : ce qui a été fait, par qui, le lien du tableau de bord, ce qu'il doit faire lui (relire et envoyer les messages, répondre à une question…).
 
