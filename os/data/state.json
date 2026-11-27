@@ -39,8 +39,8 @@
       "role": "Chef d'équipe",
       "equipe": "direction",
       "couleur": "#3b5bdb",
-      "statut": "repos",
-      "mission": ""
+      "statut": "travail",
+      "mission": "Nouveaux endroits à prospecter"
     },
     {
       "id": "prospecteur",
@@ -48,8 +48,8 @@
       "role": "Prospection",
       "equipe": "business",
       "couleur": "#e8590c",
-      "statut": "repos",
-      "mission": ""
+      "statut": "travail",
+      "mission": "Trouver de nouvelles zones à prospecter autour d'Annecy"
     },
     {
       "id": "auditeur-web",
@@ -104,6 +104,13 @@
       "agent": "prospecteur",
       "statut": "fait",
       "date": "2026-11-26"
+    },
+    {
+      "id": "m-zones-1",
+      "titre": "Nouvelles zones à prospecter",
+      "agent": "prospecteur",
+      "statut": "en_cours",
+      "date": "2026-11-27"
     }
   ],
   "taches": [
