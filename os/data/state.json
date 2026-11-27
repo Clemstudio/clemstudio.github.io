@@ -1,5 +1,5 @@
 {
-  "maj": "2026-11-26T17:05:00",
+  "maj": "2026-11-27T09:20:00",
   "zones": [
     {
       "nom": "Pringy",
@@ -30,6 +30,31 @@
       "nom": "Seynod",
       "x": 200,
       "y": 340
+    },
+    {
+      "nom": "Rumilly",
+      "x": 70,
+      "y": 30
+    },
+    {
+      "nom": "Epagny / Poisy",
+      "x": 95,
+      "y": 100
+    },
+    {
+      "nom": "Thônes",
+      "x": 540,
+      "y": 60
+    },
+    {
+      "nom": "Sévrier / St-Jorioz",
+      "x": 360,
+      "y": 300
+    },
+    {
+      "nom": "Faverges",
+      "x": 555,
+      "y": 330
     }
   ],
   "agents": [
@@ -39,8 +64,8 @@
       "role": "Chef d'équipe",
       "equipe": "direction",
       "couleur": "#3b5bdb",
-      "statut": "travail",
-      "mission": "Nouveaux endroits à prospecter"
+      "statut": "repos",
+      "mission": ""
     },
     {
       "id": "prospecteur",
@@ -48,8 +73,8 @@
       "role": "Prospection",
       "equipe": "business",
       "couleur": "#e8590c",
-      "statut": "travail",
-      "mission": "Trouver de nouvelles zones à prospecter autour d'Annecy"
+      "statut": "repos",
+      "mission": ""
     },
     {
       "id": "auditeur-web",
@@ -109,7 +134,7 @@
       "id": "m-zones-1",
       "titre": "Nouvelles zones à prospecter",
       "agent": "prospecteur",
-      "statut": "en_cours",
+      "statut": "fait",
       "date": "2026-11-27"
     }
   ],
@@ -149,6 +174,14 @@
       "tag": "business",
       "echeance": "2026-11-30",
       "source": "qg"
+    },
+    {
+      "id": "t-verif-zones",
+      "titre": "Vérifier sur Google/Maps les 3 prospects des nouvelles zones (Faverges, Sévrier, Thônes) avant d'envoyer",
+      "colonne": "a_faire",
+      "tag": "business",
+      "echeance": "2026-12-02",
+      "source": "qg"
     }
   ],
   "prospects": [
@@ -166,6 +199,51 @@
       "source": "https://api-avis-situation-sirene.insee.fr/identification/pdf/39277539100023",
       "statut": "a_contacter",
       "message": "Bonjour, En cherchant une menuiserie à Seynod, j'ai trouvé Menuiserie des Cesardes sur des annuaires professionnels, mais je n'ai trouvé aucun site à votre nom. Pour un client qui compare des devis de fenêtres ou de portes, un site simple avec vos réalisations et un formulaire de contact peut faire la différence. Je m'appelle Clément, je crée des sites web pour les artisans à Annecy (Clem Studio). Seriez-vous d'accord pour un échange de 15 minutes, par téléphone ou à l'atelier, quand cela vous arrange ? Sans engagement. Bonne journée, Clément, Clem Studio. Si vous ne souhaitez plus recevoir de messages de ma part, répondez simplement « non merci » et je ne vous recontacterai pas."
+    },
+    {
+      "id": "boucherie-jargot",
+      "entreprise": "Boucherie Jargot et Fils",
+      "secteur": "Boucherie-charcuterie, traiteur",
+      "zone": "Faverges",
+      "x": 555,
+      "y": 355,
+      "site": null,
+      "score": null,
+      "probleme": "Aucun site trouvé ; champ « site internet » vide sur la fiche tourisme",
+      "contact": "04 50 44 52 36 (boutique)",
+      "source": "https://www.haute-savoie-tourisme.org/commerces/alimentaire/produits-regionaux/132278-boucherie-jargot-et-fils",
+      "statut": "a_contacter",
+      "message": "Bonjour, En cherchant une boucherie à Faverges, j'ai trouvé la Boucherie Jargot et Fils sur la fiche de l'office de tourisme, avec vos spécialités savoyardes : pormoniers, charcuterie maison, plats traiteur. En revanche, le champ « site internet » y est vide, et je n'ai trouvé aucun site à votre nom. Une page simple avec vos horaires, vos produits et la commande traiteur aiderait les habitants et les visiteurs du lac à vous trouver. Je m'appelle Clément et je crée des sites pour les commerces autour d'Annecy (Clem Studio). Accepteriez-vous un échange de 15 minutes, quand cela vous arrange ? Sans engagement. Clément, Clem Studio. Si vous ne souhaitez plus recevoir de messages de ma part, dites-le-moi simplement et je ne vous recontacterai pas."
+    },
+    {
+      "id": "gaec-bouquet-savoyard",
+      "entreprise": "GAEC Le Bouquet Savoyard",
+      "secteur": "Maraîchage bio et fleurs, vente directe",
+      "zone": "Sévrier / St-Jorioz",
+      "x": 385,
+      "y": 325,
+      "site": null,
+      "score": null,
+      "probleme": "Aucun site trouvé ; horaires seulement sur des fiches tiers datées",
+      "contact": "04 50 52 48 49 / le.bouquet.savoyard@orange.fr (fiche de 2021, à revérifier)",
+      "source": "https://geotrek.parcdesbauges.com/api/fr/touristiccontents/258/gaec-le-bouquet-savoyard.pdf",
+      "statut": "a_contacter",
+      "message": "Bonjour, J'ai découvert le GAEC Le Bouquet Savoyard sur les fiches de l'office de tourisme : légumes bio et fleurs coupées, vente à la ferme le lundi et le jeudi. Je n'ai pas trouvé de site à votre nom. Vos horaires et vos produits de saison ne sont visibles que sur des fiches tiers, parfois anciennes (2021). Une page simple, facile à lire sur téléphone, permettrait aux habitants et aux vacanciers de la rive ouest de savoir quoi trouver et quand venir. Je suis Clément, je crée des sites près d'Annecy (Clem Studio). Seriez-vous d'accord pour un échange de 15 minutes, sans engagement ? Clément, Clem Studio. Si vous ne souhaitez plus recevoir de messages de ma part, répondez « non merci » et je ne vous écrirai plus."
+    },
+    {
+      "id": "menuiserie-crosset-perrotin",
+      "entreprise": "Menuiserie Crosset Perrotin",
+      "secteur": "Menuiserie, portes et portails",
+      "zone": "Thônes",
+      "x": 540,
+      "y": 88,
+      "site": null,
+      "score": null,
+      "probleme": "Aucun site trouvé ; fiche d'annuaire sans photos ni avis",
+      "contact": "Non relevé : courrier à l'adresse de l'entreprise (Thônes) ou passage à l'atelier",
+      "source": "https://www.pagesjaunes.fr/pros/55669608",
+      "statut": "a_contacter",
+      "message": "Bonjour, En cherchant un menuisier à Thônes, j'ai trouvé votre entreprise sur PagesJaunes, avec vos portes et portails. Je n'ai pas trouvé de site à votre nom, et la fiche ne montre aucune photo de réalisation ni aucun avis. Pour un client qui compare des devis, quelques photos de chantiers et un formulaire de contact sur une page claire peuvent faire la différence. Je m'appelle Clément et je crée des sites pour les artisans autour d'Annecy (Clem Studio). Accepteriez-vous un échange de 15 minutes, par téléphone ou à l'atelier ? Sans engagement. Clément, Clem Studio. Si vous ne souhaitez plus recevoir de messages de ma part, dites-le-moi et je ne vous recontacterai pas."
     }
   ],
   "clients": [
@@ -224,6 +302,16 @@
   },
   "activite": [
     {
+      "date": "2026-11-27T09:20:00",
+      "agent": "chef",
+      "texte": "Nouvelles zones ajoutées à la carte : Rumilly, Epagny/Poisy, Thônes, Sévrier/St-Jorioz, Faverges (hors échelle)."
+    },
+    {
+      "date": "2026-11-27T09:19:00",
+      "agent": "prospecteur",
+      "texte": "5 nouvelles zones proposées, 3 prospects trouvés (Faverges, Sévrier, Thônes), à vérifier avant envoi."
+    },
+    {
       "date": "2026-11-26T17:05:00",
       "agent": "chef",
       "texte": "Mission « nouveau projet » : 1 piste partielle. Recherche limitée car les annuaires (Bottin, PagesJaunes…) sont bloqués par le réseau de la session."
@@ -254,5 +342,6 @@
       "nom": "Mon QG",
       "url": "https://claude.ai/artifact/8g5GF3xUmpV8jQn8GqE9qr"
     }
-  ]
+  ],
+  "zones_notes": "Nouvelles zones placées hors échelle (plan schématique). Détails : os/prospects/2026-11-27-nouvelles-zones.md"
 }
